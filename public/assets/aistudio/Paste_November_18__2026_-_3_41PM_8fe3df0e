@@ -1,0 +1,1714 @@
+# BUILDFLOW – SAAS SUPER ADMIN DASHBOARD
+## Complete Platform Administration, Tenant Management, Billing, Usage Analytics and Audited Support Governance
+
+Build a complete, premium, enterprise-grade SaaS Super Admin dashboard for BuildFlow.
+
+BuildFlow is a multi-tenant construction workforce management and site operations SaaS platform.
+
+The SaaS Super Admin is responsible for managing the entire BuildFlow platform across all registered construction companies.
+
+This is the highest-level platform administration role.
+
+IMPORTANT:
+
+This dashboard is NOT a Company Admin dashboard.
+
+A Company Admin manages one construction company.
+
+A SaaS Super Admin manages the entire BuildFlow SaaS ecosystem, including:
+
+1. All registered companies (tenants).
+2. Tenant subscriptions and billing.
+3. Platform-wide usage analytics.
+4. Subscription plans and entitlements.
+5. Platform revenue and payment monitoring.
+6. Platform users and account governance.
+7. Customer support and audited access.
+8. Platform configuration.
+9. Security and audit logs.
+10. System health and operational monitoring.
+11. Announcements and platform notifications.
+12. SaaS business intelligence.
+
+Build the application from scratch. Do not reuse the previous Company Admin or Site Manager dashboard layout.
+
+The result must look like a serious commercial SaaS control centre.
+
+---
+
+# 1. PRODUCT ARCHITECTURE AND MULTI-TENANT BUSINESS LOGIC
+
+BuildFlow operates as a multi-tenant SaaS application.
+
+Each registered construction company is a separate tenant.
+
+Example:
+
+BuildFlow Platform
+|
+|-- ABC Construction Pvt Ltd
+|   |-- Projects
+|   |-- Sites
+|   |-- Employees
+|   |-- HR and Payroll
+|   |-- Attendance
+|   |-- Procurement
+|
+|-- XYZ Infrastructure Ltd
+|   |-- Projects
+|   |-- Sites
+|   |-- Employees
+|
+|-- GreenBuild Developers
+|   |-- Projects
+|   |-- Sites
+|   |-- Employees
+
+Every tenant must have isolated business records.
+
+The SaaS Super Admin can view platform-level tenant metadata, subscription status, usage metrics and authorized support information.
+
+Never create a global database query that exposes all customer payroll, bank information, identity documents or private employee records.
+
+Customer support access must use a separate audited and time-limited authorization workflow.
+
+### Core distinction
+
+The Super Admin can manage:
+- Tenant account status.
+- Tenant subscription.
+- Plan configuration.
+- Billing configuration.
+- Platform-level usage limits.
+- Platform-level security policies.
+- Support requests.
+- Platform service health.
+
+The Super Admin must not silently modify:
+- Customer payroll.
+- Employee attendance.
+- Employee salaries.
+- Company purchase records.
+- Project financial records.
+- Customer documents.
+
+Any exceptional support access must require explicit authorization, a business reason, limited scope, expiry and audit logging.
+
+---
+
+# 2. DESIGN DIRECTION
+
+Create a premium SaaS administration interface.
+
+Visual references:
+- Stripe Dashboard.
+- Linear.
+- Vercel Dashboard.
+- Modern cloud infrastructure consoles.
+- Enterprise SaaS administration products.
+
+Do not copy these products directly.
+
+### Visual identity
+
+Use a professional BuildFlow design system.
+
+Colours:
+- Dark navy: #101F35
+- Primary blue: #2563EB
+- Background: #F5F7FA
+- White cards: #FFFFFF
+- Primary text: #172B4D
+- Secondary text: #64748B
+- Success: #16A34A
+- Warning: #F59E0B
+- Danger: #DC2626
+- Purple: #7C3AED
+
+Typography: Inter.
+
+Use:
+- Lucide icons.
+- Clear data visualizations.
+- Compact professional tables.
+- Subtle shadows.
+- Clean navigation.
+- Consistent spacing.
+- High-quality status indicators.
+- Responsive charts.
+- Accessible forms.
+- Subtle animations.
+
+Avoid:
+- Generic admin templates.
+- Excessive gradients.
+- Overcrowded layouts.
+- Oversized KPI cards.
+- Unnecessary decorative graphics.
+- Fake live system indicators.
+
+The dashboard should feel like the control centre of a real SaaS company.
+
+---
+
+# 3. APPLICATION LAYOUT
+
+Create a complete responsive application shell.
+
+### Desktop
+
+Left sidebar:
+- Fixed or collapsible navigation.
+- Platform logo.
+- Navigation groups.
+- Active navigation states.
+
+Top navigation:
+- Global search.
+- Platform environment indicator.
+- System notifications.
+- Help and support.
+- Super Admin profile.
+- Account security menu.
+
+Main workspace:
+- Breadcrumbs.
+- Page title.
+- Contextual actions.
+- Filters.
+- Main content.
+- Tables and charts.
+
+### Tablet
+
+- Collapsible sidebar.
+- Responsive KPI cards.
+- Horizontally scrollable table only when necessary.
+- Responsive charts.
+
+### Mobile
+
+Super Admin must also be usable from mobile.
+
+Create:
+- Compact top navigation.
+- Slide-out navigation.
+- Responsive cards.
+- Search and filter drawers.
+- Mobile-friendly tenant lists.
+- Stacked detail panels.
+- Responsive charts.
+- Secure confirmation screens for sensitive operations.
+
+Do not simply shrink the desktop design.
+
+---
+
+# 4. SIDEBAR NAVIGATION
+
+Create these navigation sections.
+
+## PLATFORM OVERVIEW
+1. Platform Dashboard
+2. Platform Analytics
+3. System Health
+
+## TENANT MANAGEMENT
+4. All Companies
+5. Tenant Onboarding
+6. Tenant Verification
+7. Tenant Activity
+8. Suspended Accounts
+
+## SUBSCRIPTIONS & BILLING
+9. Subscription Plans
+10. Tenant Subscriptions
+11. Billing & Invoices
+12. Payments
+13. Failed Payments
+14. Refunds & Adjustments
+15. Revenue Analytics
+
+## PLATFORM USERS
+16. Platform Administrators
+17. Support Staff
+18. Role & Permissions
+
+## SUPPORT GOVERNANCE
+19. Support Tickets
+20. Authorized Support Sessions
+21. Access Requests
+22. Customer Activity Audit
+
+## PLATFORM OPERATIONS
+23. Usage & Limits
+24. Integrations
+25. Notifications & Announcements
+26. Feature Flags
+27. Platform Configuration
+
+## SECURITY & COMPLIANCE
+28. Audit Logs
+29. Security Events
+30. Access History
+31. Data Governance
+
+## ACCOUNT
+32. Super Admin Profile
+33. Security Settings
+
+All modules must have working navigation.
+
+---
+
+# 5. PLATFORM DASHBOARD – OVERVIEW
+
+The first page must provide a complete platform-wide business overview.
+
+### Header
+
+Display:
+
+Welcome to BuildFlow Control Centre.
+
+Subtitle:
+Manage tenants, subscriptions, platform usage and service operations.
+
+Display:
+- Current date.
+- Platform environment.
+- Overall platform status.
+- Last data refresh time.
+
+Clearly distinguish demo data from live platform data.
+
+### Global KPI cards
+
+Create the following:
+
+1. Total Registered Companies.
+2. Active Tenants.
+3. Trial Tenants.
+4. Suspended Tenants.
+5. Total Registered Users.
+6. Monthly Recurring Revenue (MRR).
+7. Annual Recurring Revenue (ARR).
+8. Subscription Renewal Due.
+9. Failed Payments.
+10. Monthly Active Users.
+
+Example demonstration data:
+
+- Registered Companies: 1,248
+- Active Tenants: 1,086
+- Trial Tenants: 96
+- Suspended Tenants: 12
+- Registered Users: 84,520
+- MRR: ₹18,45,000
+- ARR: ₹2,21,40,000
+- Renewals Due: 48
+- Failed Payments: 17
+- Monthly Active Users: 62,450
+
+All numbers must be labelled as sample data until connected to the actual backend.
+
+### Platform growth analytics
+
+Create charts for:
+
+- New tenant registrations.
+- Active tenant growth.
+- Monthly recurring revenue.
+- Subscription upgrades.
+- Subscription cancellations.
+- Trial-to-paid conversion.
+
+Date filters:
+- Last 7 days.
+- Last 30 days.
+- Last 90 days.
+- Last 12 months.
+- Custom range.
+
+### Tenant distribution
+
+Show:
+- Small construction companies.
+- Medium construction companies.
+- Large enterprises.
+- Infrastructure contractors.
+- Real estate developers.
+- Other construction organizations.
+
+Use clear charts.
+
+### Revenue overview
+
+Show:
+- Monthly recurring revenue.
+- Annual recurring revenue.
+- New subscription revenue.
+- Renewals.
+- Upgrades.
+- Downgrades.
+- Refunds.
+- Failed collections.
+
+Clearly separate recognized revenue, collected cash and outstanding invoices.
+
+### Platform activity feed
+
+Show recent platform events:
+
+- New company registered.
+- New subscription activated.
+- Subscription upgraded.
+- Payment received.
+- Payment failed.
+- Company suspended.
+- Support ticket escalated.
+- Admin permission changed.
+- Security event detected.
+
+Every event must link to its corresponding detail page where permitted.
+
+### Critical alerts
+
+Create a prominent alert section:
+
+- Failed payment spike.
+- Tenants approaching usage limits.
+- Upcoming subscription renewals.
+- Suspicious login attempts.
+- Platform storage approaching capacity.
+- Service degradation.
+- Repeated authentication failures.
+- Pending security review.
+
+Do not show false alerts as live events. Use clearly marked sample data.
+
+---
+
+# 6. TENANT MANAGEMENT
+
+This is one of the most important modules.
+
+A tenant means one registered construction company.
+
+Create a complete tenant management system.
+
+### All companies page
+
+Display a professional searchable table.
+
+Columns:
+
+- Company name.
+- Tenant ID.
+- Registration date.
+- Industry.
+- Company size.
+- Country.
+- Primary administrator.
+- Subscription plan.
+- Subscription status.
+- Total licensed users.
+- Active users.
+- Storage usage.
+- Last activity.
+- Account status.
+
+### Search and filters
+
+Support:
+- Company name.
+- Tenant ID.
+- Email.
+- Subscription plan.
+- Tenant status.
+- Country.
+- Registration date.
+- Industry.
+- Usage level.
+
+### Tenant statuses
+
+- Pending Verification.
+- Trial.
+- Active.
+- Payment Overdue.
+- Grace Period.
+- Restricted.
+- Suspended.
+- Cancelled.
+- Archived.
+
+Status transitions must follow defined business rules.
+
+### Tenant details page
+
+When clicking a tenant, open a complete tenant profile.
+
+Use a professional tab layout.
+
+Tabs:
+
+1. Overview.
+2. Company Information.
+3. Subscription.
+4. Billing History.
+5. Usage Analytics.
+6. Registered Users Summary.
+7. Platform Activity.
+8. Support History.
+9. Security Events.
+10. Audit History.
+
+### Tenant overview
+
+Show:
+
+- Company name.
+- Company logo.
+- Tenant ID.
+- Registration date.
+- Verification status.
+- Subscription.
+- Account status.
+- Primary administrator.
+- Country and region.
+- Number of projects.
+- Number of sites.
+- Number of registered users.
+- Monthly active users.
+- Storage usage.
+- API usage.
+- Last activity.
+
+The Super Admin should see platform-level summaries, not unrestricted customer business records.
+
+### Tenant actions
+
+Provide authorized actions:
+
+- View tenant details.
+- Verify company.
+- Reject verification.
+- Activate tenant.
+- Restrict tenant.
+- Suspend tenant.
+- Reactivate tenant.
+- Change subscription.
+- Adjust limits.
+- View invoices.
+- View support history.
+- Send platform notification.
+
+For every sensitive action:
+- Require a reason.
+- Show a confirmation dialog.
+- Record the acting admin.
+- Record the timestamp.
+- Record the old and new values.
+- Create an immutable audit event.
+
+Suspending a tenant must not delete its data.
+
+Never perform permanent deletion through an ordinary suspend action.
+
+---
+
+# 7. TENANT ONBOARDING AND VERIFICATION
+
+Build a complete onboarding management workflow.
+
+### New tenant registrations
+
+Display:
+- Company name.
+- Registration email.
+- Phone.
+- Registration date.
+- Business category.
+- Country.
+- Verification status.
+- Requested plan.
+
+### Verification workflow
+
+1. Registration received.
+2. Email verification.
+3. Company information submitted.
+4. Required verification documents received, if applicable.
+5. Review by authorized platform administrator.
+6. Approval or rejection.
+7. Tenant activated.
+
+### Verification details
+
+Allow authorized reviewers to inspect submitted company information and relevant verification documents.
+
+Do not expose unnecessary personal information.
+
+### Actions
+
+- Approve registration.
+- Request additional information.
+- Reject registration.
+- Add internal review notes.
+- Escalate verification.
+
+All verification actions must be audited.
+
+---
+
+# 8. SUBSCRIPTION PLAN MANAGEMENT
+
+Build a complete subscription plan configuration module.
+
+The SaaS Super Admin should be able to create and manage subscription plans.
+
+Example demonstration plans:
+
+- Starter.
+- Basic.
+- Professional.
+- Enterprise.
+
+Do not hardcode actual commercial prices or entitlements.
+
+The plan configuration must be dynamic.
+
+### Create plan form
+
+Fields:
+
+- Plan name.
+- Internal plan ID.
+- Description.
+- Billing interval.
+- Currency.
+- Base price.
+- Trial period.
+- Maximum users.
+- Maximum projects.
+- Maximum sites.
+- Storage allowance.
+- API usage allowance.
+- Available modules.
+- Support level.
+- Feature access.
+- Overage policy.
+- Grace period.
+- Plan status.
+
+Billing intervals:
+- Monthly.
+- Quarterly.
+- Half-yearly.
+- Annual.
+- Custom, if supported.
+
+### Feature entitlements
+
+Allow Super Admin to enable or disable features per plan.
+
+Examples:
+
+- Workforce management.
+- Attendance tracking.
+- GPS tracking.
+- HR management.
+- Payroll.
+- Procurement.
+- Inventory.
+- Equipment management.
+- Analytics.
+- Advanced reports.
+- API integrations.
+- Custom workflows.
+- Advanced permissions.
+
+### Plan lifecycle
+
+Support:
+- Draft.
+- Active.
+- Deprecated.
+- Archived.
+
+Important:
+
+Changing a plan's configuration must not unexpectedly alter existing customer agreements.
+
+Use versioned plan configurations and explicit migration rules.
+
+Existing subscriptions must retain the applicable plan version unless a migration is approved.
+
+---
+
+# 9. TENANT SUBSCRIPTION MANAGEMENT
+
+Create a dedicated subscription management page.
+
+Display:
+
+- Tenant.
+- Plan.
+- Billing interval.
+- Subscription start.
+- Next billing date.
+- Subscription end, if applicable.
+- Renewal status.
+- Auto-renewal status.
+- Amount.
+- Payment status.
+- Subscription status.
+
+### Subscription lifecycle
+
+Support:
+
+- Trial.
+- Active.
+- Renewal Pending.
+- Payment Failed.
+- Grace Period.
+- Paused.
+- Cancelled.
+- Expired.
+
+### Subscription actions
+
+Depending on permissions:
+
+- Upgrade.
+- Downgrade.
+- Renew.
+- Pause.
+- Resume.
+- Cancel.
+- Apply approved discount.
+- Adjust billing period.
+- Review subscription history.
+
+All subscription changes must create audit records.
+
+---
+
+# 10. BILLING, INVOICES AND PAYMENTS
+
+Create a professional SaaS billing centre.
+
+### Billing overview
+
+Display:
+- Total invoices.
+- Paid invoices.
+- Pending invoices.
+- Overdue invoices.
+- Failed payments.
+- Refunds.
+- Collected revenue.
+
+### Invoice management
+
+Columns:
+
+- Invoice ID.
+- Tenant.
+- Invoice date.
+- Due date.
+- Billing period.
+- Amount.
+- Tax.
+- Total.
+- Payment status.
+- Payment reference.
+
+Invoice statuses:
+
+- Draft.
+- Issued.
+- Pending.
+- Paid.
+- Overdue.
+- Cancelled.
+- Refunded.
+- Partially Refunded.
+
+### Payment management
+
+Display:
+- Payment ID.
+- Tenant.
+- Invoice ID.
+- Payment gateway.
+- Transaction reference.
+- Amount.
+- Currency.
+- Payment date.
+- Payment method category.
+- Status.
+
+Support:
+- Successful payments.
+- Failed payments.
+- Pending payments.
+- Refunds.
+- Reconciliation.
+- Payment webhook events.
+
+### Refund management
+
+Allow authorized finance administrators to initiate refunds according to policy.
+
+Require:
+- Invoice reference.
+- Payment reference.
+- Refund amount.
+- Refund reason.
+- Approval, where required.
+- Confirmation.
+
+Never mark a refund as successful until the payment gateway confirms it.
+
+Never store full card numbers, CVV or payment credentials.
+
+### Indian billing support
+
+Prepare the platform for Indian SaaS billing requirements.
+
+Support:
+- INR.
+- GST fields.
+- Tax invoice details.
+- GSTIN where applicable.
+- Customer billing addresses.
+- HSN/SAC configuration where applicable.
+- Tax breakdown.
+- Credit notes.
+- Refund records.
+
+Tax rules and invoice requirements must be configurable and professionally reviewed.
+
+Do not hardcode tax rates or legal thresholds.
+
+---
+
+# 11. REVENUE ANALYTICS
+
+Create a dedicated SaaS revenue analytics workspace.
+
+Display:
+
+- MRR.
+- ARR.
+- Total collected revenue.
+- Outstanding receivables.
+- New MRR.
+- Expansion MRR.
+- Churned MRR.
+- Net revenue retention.
+- Customer lifetime value, if sufficient data exists.
+- Average revenue per tenant.
+- Trial conversion rate.
+
+### Charts
+
+Create:
+
+1. Monthly revenue trend.
+2. Revenue by subscription plan.
+3. Revenue by country.
+4. New vs existing revenue.
+5. Subscription upgrades and downgrades.
+6. Churn trend.
+7. Failed payment trend.
+
+Allow:
+- Date filters.
+- Currency selection where applicable.
+- Export to CSV.
+- Export to PDF, if implemented.
+
+Do not confuse ARR with actual collected cash.
+
+Show metric definitions and calculation periods.
+
+---
+
+# 12. PLATFORM USAGE AND LIMIT MANAGEMENT
+
+Build a comprehensive usage analytics module.
+
+The Super Admin needs to understand how tenants consume BuildFlow resources.
+
+### Platform-wide metrics
+
+Display:
+- Total registered users.
+- Monthly active users.
+- Daily active users.
+- Total active projects.
+- Total active sites.
+- Attendance events.
+- Task records.
+- Purchase requests.
+- Document storage.
+- API requests.
+- Realtime connections.
+
+### Tenant usage table
+
+Columns:
+
+- Company.
+- Plan.
+- Licensed users.
+- Active users.
+- Project count.
+- Site count.
+- Storage consumed.
+- API consumption.
+- Usage percentage.
+- Limit status.
+
+### Usage alerts
+
+Show:
+
+- 70% usage.
+- 85% usage.
+- 95% usage.
+- Limit exceeded.
+
+Thresholds must be configurable.
+
+### Usage actions
+
+- View usage history.
+- Review limits.
+- Increase limits through approved commercial process.
+- Recommend upgrade.
+- Apply authorized temporary extension.
+- View usage trend.
+
+Do not automatically block a company's operations without a configured policy and appropriate notification or grace period.
+
+---
+
+# 13. PLATFORM USER AND ADMIN MANAGEMENT
+
+Create a separate administration system for BuildFlow's own internal platform staff.
+
+This is not the same as managing employees belonging to customer companies.
+
+### Platform administrators
+
+Roles:
+
+- SaaS Super Admin.
+- Platform Operations Admin.
+- Billing Administrator.
+- Support Administrator.
+- Security Administrator.
+- Compliance Administrator.
+- Read-only Analyst.
+
+### Admin directory
+
+Display:
+
+- Admin name.
+- Work email.
+- Assigned platform role.
+- Account status.
+- MFA status.
+- Last login.
+- Created date.
+
+### Admin management
+
+Allow authorized Super Admins to:
+
+- Invite platform administrators.
+- Assign roles.
+- Change permissions.
+- Suspend admin access.
+- Revoke sessions.
+- Require MFA.
+- Review login history.
+
+Use least-privilege permissions.
+
+Sensitive permission changes must require strong authentication and audit logging.
+
+Support maker-checker approval for especially sensitive actions.
+
+Do not allow ordinary support staff to grant themselves additional privileges.
+
+---
+
+# 14. CUSTOMER SUPPORT CENTRE
+
+Build a central support ticket management system.
+
+The Super Admin and authorized support personnel must be able to manage customer support requests.
+
+### Ticket list
+
+Columns:
+
+- Ticket ID.
+- Tenant.
+- Subject.
+- Category.
+- Priority.
+- Assigned support agent.
+- Created date.
+- Last updated.
+- Status.
+
+Categories:
+
+- Account access.
+- Subscription.
+- Billing.
+- Attendance.
+- GPS tracking.
+- HR and payroll.
+- Procurement.
+- Technical issue.
+- Data issue.
+- Security concern.
+- Other.
+
+### Ticket statuses
+
+- New.
+- Open.
+- In Progress.
+- Waiting for Customer.
+- Escalated.
+- Resolved.
+- Closed.
+
+### Ticket details
+
+Show:
+- Tenant information.
+- Ticket history.
+- Customer messages.
+- Support replies.
+- Internal notes.
+- Attachments.
+- Assigned agent.
+- Escalation history.
+
+### Support actions
+
+- Reply.
+- Assign ticket.
+- Change priority.
+- Escalate.
+- Request additional information.
+- Resolve.
+- Reopen.
+
+Internal notes must never be visible to customers.
+
+---
+
+# 15. AUDITED SUPPORT ACCESS – CRITICAL SECURITY MODULE
+
+This is a particularly important feature.
+
+A SaaS Super Admin must not have silent, unrestricted access to customer company data.
+
+Create a dedicated audited support access system.
+
+### Support access request
+
+When a support agent needs to inspect a customer environment, require:
+
+- Tenant.
+- Support ticket reference.
+- Business reason.
+- Requested access scope.
+- Requested duration.
+- Data categories requested.
+- Approver.
+
+### Access levels
+
+1. Tenant metadata only.
+2. Read-only configuration support.
+3. Limited operational diagnostics.
+4. Explicitly approved sensitive-data access, only where justified and legally permitted.
+
+Default to metadata-only or read-only access.
+
+Sensitive data access must be exceptional.
+
+### Approval workflow
+
+Support agent submits request.
+
+↓
+
+Authorized approver reviews the reason and scope.
+
+↓
+
+Customer consent or other valid authorization is obtained when required by contract, law or policy.
+
+↓
+
+Time-limited access is granted.
+
+↓
+
+Every access and action is recorded.
+
+↓
+
+Access automatically expires.
+
+### Support session interface
+
+Show:
+- Tenant.
+- Support ticket.
+- Access reason.
+- Approved scope.
+- Approver.
+- Start time.
+- Expiration time.
+- Session status.
+
+Provide an obvious banner whenever a support session is active.
+
+Do not impersonate the tenant administrator silently.
+
+Do not use shared credentials.
+
+Do not bypass tenant RLS.
+
+Do not allow unrestricted exports of sensitive customer records.
+
+### Audit history
+
+Record:
+- Who requested access.
+- Who approved it.
+- Who entered the session.
+- What tenant was accessed.
+- Which resources were viewed.
+- What changes were performed.
+- When the session ended.
+- Why the session ended.
+
+Provide immediate session revocation.
+
+This module must be designed as a security-first governance workflow, not as a hidden backdoor.
+
+---
+
+# 16. PLATFORM NOTIFICATIONS AND ANNOUNCEMENTS
+
+Build a platform-wide communication centre.
+
+The Super Admin can create announcements for:
+
+- All tenants.
+- Selected tenants.
+- Selected subscription plans.
+- Selected regions.
+- Selected tenant categories.
+
+Announcement categories:
+
+- Maintenance.
+- New features.
+- Subscription updates.
+- Security notices.
+- Platform incidents.
+- Product announcements.
+
+### Announcement form
+
+Fields:
+
+- Title.
+- Message.
+- Category.
+- Audience.
+- Start date.
+- End date.
+- Delivery channel.
+- Priority.
+
+Delivery channels may include:
+- In-app notification.
+- Email.
+- Push notification, if integrated.
+
+Support:
+- Draft.
+- Scheduled.
+- Published.
+- Expired.
+- Cancelled.
+
+Show delivery statistics where the underlying integration supports them.
+
+---
+
+# 17. FEATURE FLAGS AND PLATFORM CONFIGURATION
+
+Create a feature flag management module.
+
+The platform team should be able to enable features for:
+- All tenants.
+- Selected tenants.
+- Selected plans.
+- Internal testing tenants.
+
+Example flags:
+
+- New attendance interface.
+- Advanced payroll reports.
+- GPS tracking improvements.
+- New procurement workflow.
+- Advanced analytics.
+- Beta mobile application.
+
+### Feature flag configuration
+
+Fields:
+- Feature name.
+- Key.
+- Description.
+- Target audience.
+- Enabled status.
+- Rollout percentage, if supported.
+- Start date.
+- End date.
+- Owner.
+- Change reason.
+
+Every feature flag change must be audited.
+
+Use server-side entitlement checks. A hidden frontend menu is not sufficient security.
+
+### Platform configuration
+
+Provide controlled settings for:
+
+- Default currency.
+- Supported countries.
+- Time zones.
+- Notification defaults.
+- Authentication policies.
+- File upload limits.
+- API rate limits.
+- Session policies.
+- Maintenance settings.
+
+High-risk configuration changes must require additional confirmation and potentially a second approver.
+
+---
+
+# 18. SYSTEM HEALTH AND PLATFORM OPERATIONS
+
+Create a system health dashboard.
+
+Show operational indicators from actual monitoring integrations.
+
+### Platform service overview
+
+Monitor:
+
+- Authentication.
+- Database.
+- API.
+- File storage.
+- Realtime services.
+- Payment integration.
+- Notification service.
+- Background jobs.
+- Mobile API.
+
+### Metrics
+
+Where available, show:
+- API availability.
+- Response time.
+- Error rate.
+- Request volume.
+- Database connection usage.
+- Storage usage.
+- Queue backlog.
+- Failed background jobs.
+- Realtime connection count.
+
+### Incident management
+
+Display:
+- Incident ID.
+- Service.
+- Severity.
+- Start time.
+- Current status.
+- Assigned owner.
+- Resolution summary.
+
+Statuses:
+
+- Investigating.
+- Identified.
+- Monitoring.
+- Resolved.
+
+### Maintenance management
+
+Allow authorized operations staff to:
+- Schedule maintenance.
+- Create incident notices.
+- Notify affected tenants.
+- Update maintenance status.
+
+Never show fabricated uptime or health as real platform monitoring.
+
+When monitoring is not integrated, display "Monitoring not connected" or clearly marked demo data.
+
+---
+
+# 19. AUDIT LOGS AND SECURITY EVENTS
+
+Create a comprehensive audit and security workspace.
+
+### Audit log fields
+
+- Event ID.
+- Timestamp.
+- Actor.
+- Actor role.
+- Tenant, if applicable.
+- Action.
+- Resource.
+- Previous value, when appropriate.
+- New value, when appropriate.
+- IP or device metadata, subject to privacy policy.
+- Reason.
+- Result.
+
+### Events to record
+
+- Tenant activation.
+- Tenant suspension.
+- Subscription changes.
+- Invoice adjustments.
+- Refunds.
+- Admin invitations.
+- Permission changes.
+- Support access requests.
+- Support session starts.
+- Support session expirations.
+- Sensitive data access.
+- Feature flag changes.
+- Platform configuration changes.
+- Security policy changes.
+
+### Security event monitoring
+
+Show:
+- Repeated failed logins.
+- Suspicious login activity.
+- MFA failures.
+- Privilege escalation attempts.
+- Unauthorized access attempts.
+- Unusual support access.
+- Unusual API usage.
+
+### Audit log capabilities
+
+- Search.
+- Filters.
+- Date ranges.
+- Actor filters.
+- Tenant filters.
+- Event categories.
+- Export, permission controlled.
+
+Audit records must be append-only and protected from ordinary administrators modifying or deleting them.
+
+---
+
+# 20. DATA GOVERNANCE
+
+Create a data governance module.
+
+Show platform-level information about:
+
+- Tenant data retention policies.
+- File retention.
+- Backup status.
+- Data export requests.
+- Tenant deletion requests.
+- Data portability requests.
+- Legal holds, if applicable.
+- Privacy-related requests.
+
+### Tenant deletion workflow
+
+Never permanently delete a tenant immediately.
+
+Use a controlled workflow:
+
+1. Deletion request received.
+2. Requester authorization verified.
+3. Contractual and legal obligations reviewed.
+4. Pending billing and retention requirements checked.
+5. Authorized approval.
+6. Tenant notified.
+7. Data export opportunity, where applicable.
+8. Deletion scheduled.
+9. Deletion executed through a controlled backend process.
+10. Completion evidence and audit record retained.
+
+Support data export and deletion according to applicable contracts and privacy law.
+
+Do not provide a one-click permanent deletion button without safeguards.
+
+---
+
+# 21. PLATFORM ANALYTICS
+
+Create a dedicated business intelligence module.
+
+### Business metrics
+
+- Total tenants.
+- Active tenants.
+- New tenants.
+- Trial tenants.
+- Paying tenants.
+- Tenant churn.
+- Trial conversion.
+- MRR.
+- ARR.
+- Average revenue per tenant.
+- Subscription distribution.
+- Renewal rate.
+
+### Product usage metrics
+
+- Daily active users.
+- Monthly active users.
+- Most-used modules.
+- Attendance events.
+- Task creation volume.
+- Purchase request volume.
+- Payroll processing volume, as aggregate metadata only.
+- Mobile vs web usage.
+- API usage.
+
+### Customer retention
+
+Show:
+- New tenant cohorts.
+- Monthly retention.
+- Subscription renewals.
+- Cancellation trends.
+- Expansion trends.
+
+Do not expose individual workers' salaries or private employment details in platform analytics.
+
+---
+
+# 22. PLATFORM ADMIN PROFILE AND SECURITY
+
+Create a dedicated Super Admin profile.
+
+Display:
+- Name.
+- Work email.
+- Platform role.
+- Account status.
+- MFA status.
+- Last login.
+- Active sessions.
+
+Security settings:
+- Multi-factor authentication.
+- Session management.
+- Password update.
+- Trusted devices.
+- Active session revocation.
+- Login history.
+- Recovery options.
+
+Require strong authentication for high-risk actions such as:
+- Refunds.
+- Tenant suspension.
+- Permission elevation.
+- Support session authorization.
+- Security configuration changes.
+
+Use re-authentication or step-up authentication where appropriate.
+
+---
+
+# 23. INTERACTION REQUIREMENTS
+
+Every visible button must have a meaningful function.
+
+Implement:
+
+- Sidebar navigation.
+- Global search.
+- Tenant search.
+- Advanced filters.
+- Pagination.
+- Sorting.
+- Tenant detail tabs.
+- Tenant creation and onboarding review.
+- Tenant activation and suspension workflows.
+- Plan creation and editing.
+- Subscription management.
+- Invoice viewing.
+- Payment history.
+- Refund workflow.
+- Usage charts.
+- Support ticket workflows.
+- Support access request workflow.
+- Audit log search.
+- Feature flag management.
+- Announcement creation.
+- Platform health views.
+- Admin management.
+- Confirmation dialogs.
+- Form validation.
+- Success and error states.
+- Loading states.
+- Empty states.
+
+Use real mock interactions initially.
+
+Do not leave buttons decorative or inert.
+
+All sensitive actions must have permission checks and audit-event simulation in the prototype.
+
+---
+
+# 24. TECHNICAL STACK AND CODE ARCHITECTURE
+
+Use:
+
+- React.
+- TypeScript.
+- Vite.
+- Tailwind CSS.
+- shadcn/ui.
+- Lucide React.
+- React Router.
+- TanStack Query.
+- React Hook Form.
+- Zod.
+- Zustand where appropriate.
+- Recharts.
+- Framer Motion.
+
+Use a modular project structure:
+
+src/
+  components/
+    layout/
+    dashboard/
+    tenants/
+    subscriptions/
+    billing/
+    analytics/
+    support/
+    governance/
+    security/
+    operations/
+    shared/
+
+  pages/
+    PlatformDashboard/
+    PlatformAnalytics/
+    SystemHealth/
+    Tenants/
+    TenantDetails/
+    TenantOnboarding/
+    SubscriptionPlans/
+    Subscriptions/
+    Billing/
+    Payments/
+    Revenue/
+    PlatformAdmins/
+    SupportTickets/
+    SupportAccess/
+    Usage/
+    Announcements/
+    FeatureFlags/
+    AuditLogs/
+    SecurityEvents/
+    DataGovernance/
+    Settings/
+
+  services/
+    tenantService.ts
+    subscriptionService.ts
+    billingService.ts
+    paymentService.ts
+    analyticsService.ts
+    usageService.ts
+    supportService.ts
+    governanceService.ts
+    auditService.ts
+    systemHealthService.ts
+
+  hooks/
+  types/
+  utils/
+  routes/
+
+Keep UI components separate from business logic.
+
+Use centralized API services.
+
+Use TypeScript models for every major entity.
+
+Use realistic sample data through mock API services.
+
+Do not scatter hardcoded data throughout UI components.
+
+---
+
+# 25. DATABASE AND BACKEND READINESS
+
+Prepare data models for:
+
+- tenants
+- tenant_domains
+- tenant_verifications
+- tenant_subscriptions
+- subscription_plans
+- subscription_plan_versions
+- subscription_entitlements
+- invoices
+- invoice_items
+- payments
+- refunds
+- payment_webhook_events
+- tenant_usage_metrics
+- platform_admins
+- platform_roles
+- platform_permissions
+- support_tickets
+- support_messages
+- support_access_requests
+- support_access_approvals
+- support_access_sessions
+- platform_announcements
+- feature_flags
+- feature_flag_assignments
+- system_incidents
+- platform_audit_logs
+- security_events
+- data_governance_requests
+- platform_configuration
+
+Use stable IDs and timestamps.
+
+All tenant-specific records must carry the tenant reference where appropriate.
+
+Implement tenant isolation at the backend using Supabase Row Level Security or equivalent server-side authorization.
+
+Do not allow the frontend to directly bypass tenant boundaries.
+
+Use Edge Functions or trusted backend services for:
+- Subscription lifecycle changes.
+- Billing operations.
+- Refund requests.
+- Entitlement evaluation.
+- Tenant suspension.
+- Support access grants.
+- Sensitive administrative actions.
+- Audit logging.
+
+Never expose service-role keys or payment gateway secrets in frontend code.
+
+---
+
+# 26. IMPORTANT BUSINESS RULES
+
+1. The SaaS Super Admin is separate from all customer company administrators.
+2. A tenant suspension must not delete customer records.
+3. Subscription plan changes must preserve billing history.
+4. Existing customer entitlements must be versioned.
+5. Revenue analytics must distinguish MRR, ARR and collected revenue.
+6. Failed payments must not automatically be marked as successful.
+7. Refunds must be confirmed by the payment gateway.
+8. Support access must be limited, approved, time-bound and audited.
+9. Customer payroll and private employee records must not appear in general platform analytics.
+10. Tenant isolation must be enforced by backend policies.
+11. Platform administrators must follow least-privilege access.
+12. Audit logs must be append-only.
+13. Critical actions must require confirmation and a reason.
+14. Sensitive operations should support maker-checker approval.
+15. Demo system-health metrics must never be represented as actual uptime.
+
+---
+
+# 27. FINAL ACCEPTANCE CRITERIA
+
+The final dashboard must:
+
+- Look like a premium enterprise SaaS control centre.
+- Be fully responsive on desktop, tablet and mobile.
+- Manage multiple construction-company tenants.
+- Support dynamic subscription plans.
+- Provide complete billing and payment monitoring.
+- Provide revenue and usage analytics.
+- Manage platform administrators and permissions.
+- Include a customer support centre.
+- Include audited support access.
+- Include system health monitoring.
+- Include security and audit logs.
+- Include platform configuration and feature flags.
+- Include data governance workflows.
+- Have working navigation and functional interactions.
+- Use realistic construction SaaS demonstration data.
+- Be architected for Supabase integration.
+- Maintain strict tenant isolation.
+
+## IMPLEMENTATION INSTRUCTIONS
+
+Build this as a new, independent SaaS Super Admin application workspace.
+
+First implement:
+1. Application shell.
+2. Platform Dashboard.
+3. Tenant Management.
+4. Tenant Details.
+
+Then implement:
+5. Subscription Management.
+6. Billing and Payments.
+7. Revenue and Usage Analytics.
+8. Platform Admin Management.
+9. Support Centre and Audited Support Access.
+10. Platform Operations.
+11. Security and Audit Logs.
+12. Data Governance and Settings.
+
+Use one consistent design system throughout.
+
+Prioritize security, clear operational visibility, tenant governance and reliable business workflows.
+
+The final result should feel like a real commercial SaaS platform administration console, not a generic CRUD dashboard.

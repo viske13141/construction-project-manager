@@ -1,0 +1,1300 @@
+# BUILDFLOW — PROJECT MANAGER DASHBOARD
+## Complete UI/UX and Functional Development Prompt
+
+Build a premium, enterprise-grade **Project Manager Dashboard** for BuildFlow, a multi-tenant Construction Workforce Management and Project Operations SaaS platform.
+
+Build this dashboard completely from scratch. Do not reuse the existing Company Admin or Site Manager dashboard layouts. Create a dedicated Project Manager experience with its own information architecture, navigation, project-focused workflows, analytics and responsive interface.
+
+This is a real construction project management workspace, not a generic admin dashboard or static analytics template.
+
+---
+
+# 1. PROJECT MANAGER — ROLE AND RESPONSIBILITIES
+
+The Project Manager oversees multiple projects and their associated construction sites.
+
+Their responsibilities include:
+
+- Monitoring progress across all assigned projects.
+- Comparing the performance of different construction sites.
+- Tracking project budgets, expenses and financial forecasts.
+- Monitoring workforce strength and labour deployment.
+- Tracking project milestones and deadlines.
+- Monitoring site managers, engineers and supervisors.
+- Reviewing daily progress reports.
+- Identifying delayed activities and project risks.
+- Reviewing material and equipment availability.
+- Monitoring project-level purchase requests.
+- Reviewing project-level expenses within authorized limits.
+- Escalating operational issues to Company Admin.
+- Preparing project performance reports.
+- Ensuring projects are completed within approved budgets and timelines.
+
+IMPORTANT ROLE RULE:
+
+A Project Manager should only access projects explicitly assigned to them.
+
+They should not automatically receive access to every company project, employee salary record, company-wide finance records or unrestricted HR administration.
+
+Permissions must be configurable by the Company Admin.
+
+A Project Manager may oversee several projects, and each project may have several sites, Site Managers, Site Engineers and Supervisors.
+
+---
+
+# 2. DESIGN DIRECTION
+
+Create a premium construction ERP interface inspired by modern enterprise project management platforms.
+
+Visual direction:
+- Professional enterprise SaaS.
+- Clean, spacious and information-rich.
+- Modern dashboard with excellent visual hierarchy.
+- Construction-specific visual elements.
+- Data visualization that is easy to understand.
+- Minimal unnecessary decoration.
+- Smooth transitions and subtle animations.
+
+Color palette:
+- Primary Navy: #101F35
+- Primary Blue: #2563EB
+- Construction Orange: #F59E0B
+- Background: #F5F7FA
+- Cards: #FFFFFF
+- Main Text: #172B4D
+- Secondary Text: #64748B
+- Success: #16A34A
+- Warning: #F59E0B
+- Danger: #DC2626
+- Purple: #7C3AED
+- Borders: #E2E8F0
+
+Use Inter typography and Lucide icons.
+
+Use:
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- Lucide React
+- Recharts
+- Framer Motion
+- React Router
+- TanStack Query
+- React Hook Form
+- Zod
+
+Build reusable components and maintain a clean modular project structure.
+
+---
+
+# 3. MAIN APPLICATION LAYOUT
+
+Create a dedicated Project Manager application shell.
+
+## Desktop Sidebar
+
+Use a dark navy sidebar with:
+- BuildFlow logo.
+- Project Manager profile.
+- Navigation sections.
+- Expandable menu groups.
+- Active navigation indicator.
+- Collapsible sidebar.
+- Logout option.
+
+Navigation:
+
+1. Overview
+2. My Projects
+3. Project Comparison
+4. Project Timeline
+5. Milestones & Tasks
+6. Project Workforce
+7. Site Performance
+8. Budget & Cost Control
+9. Materials & Procurement
+10. Equipment & Assets
+11. Project Issues & Risks
+12. Daily Progress Reports
+13. Approvals
+14. Project Documents
+15. Reports & Analytics
+16. Notifications
+17. My Profile
+18. Settings
+
+Do not make every navigation item open the same page. Each module must have its own dedicated page, layout and meaningful interactions.
+
+## Top Navigation Bar
+
+Include:
+- Current page title and breadcrumb.
+- Project selector.
+- Date range selector.
+- Search.
+- Notifications with unread count.
+- Help icon.
+- Project Manager profile menu.
+
+The project selector should support:
+- All Assigned Projects.
+- Individual projects.
+- Recently viewed projects.
+
+Selecting a project should update relevant dashboard information and filters.
+
+---
+
+# 4. PROJECT MANAGER OVERVIEW DASHBOARD
+
+This is the main landing page.
+
+The overview should provide an immediate understanding of the entire assigned project portfolio.
+
+## A. Welcome Section
+
+Display:
+
+"Good Morning, Project Manager"
+
+Subtitle:
+
+"Here's the performance overview of your assigned construction projects."
+
+Include:
+- Current date.
+- Reporting period.
+- Project filter.
+- Generate Report button.
+
+## B. Portfolio KPI Cards
+
+Create the following KPI cards:
+
+1. Total Assigned Projects
+2. Active Projects
+3. Projects On Schedule
+4. Delayed Projects
+5. Average Project Completion
+6. Total Assigned Workforce
+7. Total Approved Project Budget
+8. Total Project Expenditure
+
+Each card should contain:
+- Large numerical value.
+- Supporting description.
+- Trend compared with the previous reporting period where data exists.
+- Small visual indicator.
+- Relevant Lucide icon.
+
+Make the cards clickable. Clicking a card should open the relevant filtered page.
+
+Do not use arbitrary trend values. Clearly label demo data as sample data.
+
+## C. Project Portfolio Overview
+
+Create a major project portfolio section.
+
+Display projects as professional cards or a compact table with:
+
+- Project name.
+- Project code.
+- Project image or construction thumbnail.
+- Client name.
+- Project location.
+- Project Manager.
+- Site Manager.
+- Project start date.
+- Expected completion date.
+- Overall completion percentage.
+- Budget utilization.
+- Workforce currently assigned.
+- Project status.
+
+Project statuses:
+- Planning
+- Not Started
+- Active
+- On Track
+- At Risk
+- Delayed
+- On Hold
+- Completed
+- Cancelled
+
+Include filters:
+- All Projects
+- Active
+- On Track
+- At Risk
+- Delayed
+- Completed
+
+Add search and sorting.
+
+Clicking a project must open its Project Details workspace.
+
+## D. Project Progress Analytics
+
+Create a large interactive chart showing progress across projects.
+
+Display:
+- Planned progress.
+- Actual progress.
+- Progress variance.
+- Reporting dates.
+
+Use a line chart or grouped bar chart.
+
+The Project Manager should immediately identify which projects are progressing slower than planned.
+
+## E. Project Budget Overview
+
+Create a budget analytics section with:
+
+- Total approved budget.
+- Total committed cost.
+- Total approved expenses.
+- Total paid expenses.
+- Remaining budget.
+- Forecasted final cost.
+
+Use a budget-versus-actual chart.
+
+IMPORTANT:
+
+Keep these financial categories separate:
+- Approved Budget
+- Committed Cost
+- Approved Expense
+- Paid Expense
+- Forecasted Cost
+
+Do not treat pending purchase requests or unapproved expenses as paid expenses.
+
+Show budget utilization percentage and configurable warning thresholds.
+
+## F. Workforce Overview
+
+Display:
+- Total assigned workers.
+- Present today.
+- Absent today.
+- On leave.
+- Active contractors.
+- Site-wise workforce distribution.
+
+Create a bar chart comparing workforce across projects.
+
+Include a small attendance summary and project-wise manpower allocation.
+
+The Project Manager must not automatically see confidential employee salary information.
+
+## G. Project Health Overview
+
+Create a project health panel.
+
+Each project should have a health status:
+
+- Healthy
+- Needs Attention
+- Critical
+
+Health should be calculated from configurable indicators such as:
+- Schedule variance.
+- Budget variance.
+- Workforce shortage.
+- Material shortages.
+- Unresolved critical issues.
+- Delayed milestones.
+
+Explain why a project is marked at risk.
+
+Do not use arbitrary AI-generated project risk scores. Initially calculate project health using transparent, configurable rules.
+
+## H. Recent Project Activities
+
+Display:
+- Site Manager submitted daily report.
+- Site Engineer updated milestone.
+- Workforce attendance exceptions.
+- Material delivery received.
+- Purchase request submitted.
+- Project expense submitted.
+- Safety issue reported.
+- Milestone delayed.
+- Project document uploaded.
+
+Every activity should show:
+- User.
+- Project and site.
+- Action.
+- Timestamp.
+- Current status.
+
+---
+
+# 5. MY PROJECTS MODULE
+
+Create a dedicated My Projects page.
+
+This is the central workspace for all projects assigned to the Project Manager.
+
+Provide two display modes:
+- Grid View
+- Table View
+
+Each project must show:
+
+Project information:
+- Project name.
+- Project code.
+- Client.
+- Location.
+- Project category.
+- Project description.
+- Contract value, where authorized.
+- Approved budget.
+- Start date.
+- Expected completion.
+- Actual completion.
+
+Operational information:
+- Number of construction sites.
+- Site Managers.
+- Site Engineers.
+- Total assigned workforce.
+- Current attendance.
+- Active tasks.
+- Completed tasks.
+- Delayed tasks.
+- Open issues.
+
+Performance information:
+- Planned completion.
+- Actual completion.
+- Schedule variance.
+- Budget utilization.
+- Project health.
+
+Filters:
+- Project status.
+- Location.
+- Client.
+- Project type.
+- Completion range.
+- Budget utilization.
+- Project health.
+
+Clicking any project opens a dedicated project workspace with its own navigation.
+
+---
+
+# 6. PROJECT DETAILS WORKSPACE
+
+Every project should have a dedicated detailed workspace.
+
+When the Project Manager selects a project, open a project-specific interface.
+
+Create the following tabs:
+
+1. Project Overview
+2. Sites
+3. Progress
+4. Timeline
+5. Workforce
+6. Budget
+7. Materials
+8. Equipment
+9. Issues
+10. Documents
+11. Reports
+12. Activity History
+
+## Project Overview
+
+Show:
+- Project summary.
+- Client details.
+- Project location.
+- Start and end dates.
+- Project status.
+- Overall progress.
+- Approved budget.
+- Expenditure.
+- Remaining budget.
+- Assigned workforce.
+- Site Managers.
+- Active sites.
+- Pending milestones.
+- Critical alerts.
+
+Include a visual project progress timeline.
+
+## Project Sites
+
+Display all construction sites associated with the selected project.
+
+Each site should display:
+- Site name.
+- Site location.
+- Site Manager.
+- Site Engineer.
+- Supervisor.
+- Workforce count.
+- Present workers.
+- Site progress.
+- Material status.
+- Equipment status.
+- Open issues.
+- Last submitted daily report.
+
+Clicking a site opens a site-specific performance view.
+
+The Project Manager should be able to compare sites within the same project.
+
+---
+
+# 7. PROJECT COMPARISON MODULE
+
+This is one of the most important modules.
+
+Build a dedicated Project Comparison page.
+
+The Project Manager should be able to select multiple assigned projects and compare them side by side.
+
+Support at least two and up to five projects at a time.
+
+Compare:
+
+## Schedule Performance
+- Planned progress.
+- Actual progress.
+- Completion percentage.
+- Delayed milestones.
+- Days ahead or behind schedule.
+
+## Financial Performance
+- Approved budget.
+- Committed cost.
+- Approved expenditure.
+- Paid expenditure.
+- Remaining budget.
+- Forecasted cost.
+- Budget utilization percentage.
+
+## Workforce Performance
+- Total assigned workers.
+- Average daily attendance.
+- Workforce shortage.
+- Contractor workforce.
+- Workforce deployment by site.
+
+## Operational Performance
+- Open issues.
+- Critical safety issues.
+- Material shortages.
+- Delayed tasks.
+- Equipment downtime.
+- Pending approvals.
+
+Create:
+- Side-by-side comparison cards.
+- Interactive charts.
+- Project performance matrix.
+- Clear status indicators.
+- Export comparison report.
+
+Highlight the strongest-performing and weakest-performing indicators.
+
+Do not create misleading overall rankings when the source data is incomplete.
+
+---
+
+# 8. PROJECT TIMELINE AND MILESTONES
+
+Build a complete project planning and monitoring interface.
+
+## Project Timeline
+
+Include:
+- Gantt-style timeline.
+- Project phases.
+- Planned start and finish.
+- Actual start and finish.
+- Dependencies.
+- Delayed activities.
+- Milestone markers.
+- Completion percentage.
+
+Allow the Project Manager to filter by project, site, phase and status.
+
+## Milestone Management
+
+Each milestone should include:
+- Milestone name.
+- Project.
+- Site.
+- Description.
+- Planned date.
+- Revised date.
+- Actual completion date.
+- Responsible person.
+- Assigned team.
+- Completion percentage.
+- Status.
+- Supporting documents or photographs.
+
+Milestone statuses:
+- Upcoming
+- In Progress
+- Completed
+- Delayed
+- Blocked
+
+Allow authorized Project Managers to create and update milestones.
+
+Record revisions and preserve the original planned date for variance analysis.
+
+## Task Monitoring
+
+Display:
+- Task name.
+- Project and site.
+- Responsible Site Manager or Engineer.
+- Assigned team.
+- Priority.
+- Planned duration.
+- Actual duration.
+- Progress.
+- Dependencies.
+- Due date.
+- Status.
+
+The Project Manager should be able to assign or reassign tasks only within their authorized scope.
+
+---
+
+# 9. PROJECT WORKFORCE MODULE
+
+Create a project-level workforce monitoring page.
+
+The Project Manager needs to understand manpower availability across all assigned projects.
+
+Display:
+- Total workforce assigned.
+- Workers present today.
+- Absent workers.
+- Workers on leave.
+- Contractors.
+- Supervisors.
+- Site Engineers.
+- Site Managers.
+- Workforce shortage by project.
+
+## Workforce Distribution
+
+Create project-wise and site-wise workforce charts.
+
+## Workforce Allocation
+
+Display:
+- Employee or worker name.
+- Employee ID.
+- Designation.
+- Department.
+- Assigned project.
+- Assigned site.
+- Reporting Supervisor.
+- Attendance status.
+- Assignment status.
+
+Provide filters by project, site, designation and attendance status.
+
+## Workforce Shortage
+
+Identify projects where actual manpower is below the required manpower.
+
+Show:
+- Required workforce.
+- Available workforce.
+- Shortage.
+- Critical designation shortages.
+- Affected project/site.
+- Recommended action.
+
+Project Managers can submit manpower allocation or additional workforce requests to HR or Company Admin.
+
+They cannot directly change company-wide employee records or payroll structures unless explicitly granted permission.
+
+---
+
+# 10. SITE PERFORMANCE MODULE
+
+Create a project-level site performance monitoring workspace.
+
+The Project Manager should be able to review all sites under assigned projects.
+
+For each site display:
+
+- Site name.
+- Site Manager.
+- Site Engineer.
+- Supervisor.
+- Workforce present.
+- Attendance percentage.
+- Daily work progress.
+- Planned versus actual work.
+- Material availability.
+- Equipment availability.
+- Safety incidents.
+- Open issues.
+- Last daily report.
+- Site health.
+
+Include a site comparison table and visual performance charts.
+
+Allow the Project Manager to open the detailed site report.
+
+Site Managers remain responsible for daily site execution. The Project Manager monitors, reviews and coordinates across sites.
+
+---
+
+# 11. BUDGET AND COST CONTROL MODULE
+
+Build a dedicated project financial monitoring workspace.
+
+This is not a replacement for the Finance & Payroll module.
+
+The Project Manager receives project-level financial visibility based on permissions.
+
+## Budget Summary
+
+Display:
+- Approved project budget.
+- Revised approved budget.
+- Committed cost.
+- Approved expenditure.
+- Paid expenditure.
+- Remaining available budget.
+- Forecasted final cost.
+- Budget variance.
+
+## Budget Breakdown
+
+Support categories such as:
+- Labour.
+- Materials.
+- Equipment.
+- Contractors.
+- Transportation.
+- Site operations.
+- Safety.
+- Other approved expenses.
+
+Create charts:
+- Budget versus actual.
+- Monthly expenditure.
+- Cost by category.
+- Project-wise cost trends.
+- Forecasted versus approved budget.
+
+## Budget Alerts
+
+Show:
+- Budget utilization warning.
+- Cost overrun risk.
+- Unexpected expenditure increase.
+- Unapproved spending.
+- Pending financial approvals.
+- Missing project cost allocations.
+
+Allow authorized Project Managers to:
+- Review project budgets.
+- Submit budget revision requests.
+- Add project-level cost remarks.
+- Review expense records.
+- Approve expenses only within their assigned authority.
+
+Actual payments and financial releases remain under Finance authorization.
+
+---
+
+# 12. MATERIALS AND PROCUREMENT MONITORING
+
+Create a project-level materials and procurement monitoring page.
+
+Display:
+- Material requests.
+- Approved purchase requests.
+- Purchase orders.
+- Material deliveries.
+- Pending receipts.
+- Material consumption.
+- Current inventory.
+- Material shortages.
+
+For each material request show:
+- Request number.
+- Project.
+- Site.
+- Requested by.
+- Material.
+- Quantity.
+- Unit.
+- Estimated cost.
+- Priority.
+- Request date.
+- Approval status.
+- Delivery status.
+
+Provide material shortage alerts.
+
+Project Managers may review and approve project-level purchase requests only where authorized by the company's approval workflow.
+
+IMPORTANT:
+
+A submitted bill is not proof of material delivery.
+
+A purchase order is not proof of receipt.
+
+Inventory must only be updated after authorized material receipt verification.
+
+---
+
+# 13. EQUIPMENT AND ASSET MONITORING
+
+Create a project equipment monitoring page.
+
+Display:
+- Equipment name.
+- Equipment ID.
+- Assigned project.
+- Assigned site.
+- Operator.
+- Availability.
+- Utilization.
+- Downtime.
+- Maintenance status.
+- Next maintenance date.
+
+Show equipment distribution across projects.
+
+Highlight:
+- Equipment breakdown.
+- Maintenance overdue.
+- Idle equipment.
+- Equipment shortages.
+- Equipment reassignment requests.
+
+Allow authorized equipment allocation requests between sites.
+
+---
+
+# 14. PROJECT ISSUES AND RISKS
+
+Create a centralized project issue management page.
+
+Issue categories:
+- Construction delay.
+- Workforce shortage.
+- Material shortage.
+- Equipment breakdown.
+- Safety incident.
+- Quality issue.
+- Budget overrun.
+- Contractor issue.
+- Client dependency.
+- Weather disruption.
+- Documentation issue.
+
+Each issue should contain:
+- Issue ID.
+- Title.
+- Description.
+- Project.
+- Site.
+- Reported by.
+- Assigned person.
+- Priority.
+- Severity.
+- Date reported.
+- Due date.
+- Status.
+- Supporting photographs.
+- Resolution remarks.
+
+Statuses:
+- Open
+- Assigned
+- In Progress
+- Escalated
+- Resolved
+- Closed
+
+Create a project risk register.
+
+The Project Manager should be able to:
+- Assign issues to responsible people.
+- Set deadlines.
+- Add remarks.
+- Escalate critical issues.
+- Review resolution evidence.
+- Close issues after verification.
+
+Maintain a complete activity history.
+
+---
+
+# 15. DAILY PROGRESS REPORTS
+
+Create a centralized daily progress report module.
+
+Project Managers should receive reports submitted by Site Managers and Site Engineers.
+
+Each report should show:
+
+- Report ID.
+- Project.
+- Site.
+- Reporting date.
+- Submitted by.
+- Workforce present.
+- Work completed.
+- Planned work.
+- Work progress.
+- Materials consumed.
+- Equipment used.
+- Delays.
+- Safety observations.
+- Quality observations.
+- Site photographs.
+- Issues raised.
+- Next day's plan.
+
+Provide:
+- Report list.
+- Detailed report view.
+- Project filters.
+- Site filters.
+- Date filters.
+- Pending review.
+- Reviewed reports.
+- Export PDF.
+
+Allow Project Managers to review reports, add comments and request corrections.
+
+Never silently overwrite previously submitted reports. Preserve the original submission and revision history.
+
+---
+
+# 16. APPROVALS MODULE
+
+Create a dedicated Project Manager approval centre.
+
+Show only approval requests within the Project Manager's assigned scope and permissions.
+
+Approval categories:
+- Project purchase requests.
+- Material requisitions.
+- Project expense requests.
+- Contractor work verification.
+- Milestone completion.
+- Project schedule changes.
+- Resource allocation requests.
+- Budget revision requests.
+- Equipment allocation requests.
+
+Each approval card should show:
+- Request number.
+- Request type.
+- Project and site.
+- Submitted by.
+- Request date.
+- Amount where relevant and authorized.
+- Supporting documents.
+- Previous approval history.
+- Current status.
+
+Actions:
+- Approve.
+- Reject.
+- Request Changes.
+- Escalate.
+
+Require remarks for rejection and significant changes.
+
+Implement configurable approval levels and amount thresholds.
+
+A Project Manager must not approve requests outside their assigned authority.
+
+Do not allow a user to approve their own request where maker-checker separation is required.
+
+---
+
+# 17. PROJECT DOCUMENTS
+
+Create a project document repository.
+
+Document categories:
+- Project contracts.
+- Drawings.
+- BOQ.
+- Work orders.
+- Site reports.
+- Safety documents.
+- Quality reports.
+- Permits.
+- Material documents.
+- Contractor documents.
+- Client approvals.
+- Project photographs.
+
+Features:
+- Upload documents.
+- Preview supported documents.
+- Search.
+- Filter by project and category.
+- Document version history.
+- Upload date.
+- Uploaded by.
+- Access permissions.
+- Download authorized files.
+
+Store files privately and use secure, time-limited access links.
+
+---
+
+# 18. REPORTS AND ANALYTICS
+
+Create a professional project analytics centre.
+
+Reports:
+1. Project Progress Report.
+2. Project Delay Report.
+3. Budget Utilization Report.
+4. Project Cost Variance Report.
+5. Workforce Deployment Report.
+6. Workforce Attendance Report.
+7. Site Performance Report.
+8. Milestone Completion Report.
+9. Material Consumption Report.
+10. Equipment Utilization Report.
+11. Project Risk Report.
+12. Daily Progress Summary.
+13. Contractor Performance Report.
+
+Support:
+- Project selection.
+- Site selection.
+- Date range.
+- Report preview.
+- PDF export.
+- Excel/CSV export where supported.
+
+Reports must use the same underlying data definitions as dashboard metrics.
+
+Clearly distinguish actual values, estimates and forecasts.
+
+---
+
+# 19. NOTIFICATIONS
+
+Create a Project Manager notification centre.
+
+Notification examples:
+- Project milestone delayed.
+- Site Manager submitted daily report.
+- Budget utilization exceeded warning threshold.
+- Critical workforce shortage.
+- Material delivery delayed.
+- Critical safety issue reported.
+- Purchase request pending.
+- Contractor work verification pending.
+- Equipment breakdown reported.
+- Project completion date approaching.
+
+Include:
+- Read/unread.
+- Notification category.
+- Project reference.
+- Timestamp.
+- Open related record.
+- Notification preferences.
+
+---
+
+# 20. RESPONSIVE MOBILE EXPERIENCE
+
+Mobile responsiveness is mandatory.
+
+Do not simply shrink the desktop dashboard.
+
+Design separate mobile layouts for Project Managers who frequently visit construction sites.
+
+## Desktop
+
+- Sidebar navigation.
+- Multi-column KPI cards.
+- Wide project comparison tables.
+- Interactive analytics.
+- Detailed project workspaces.
+
+## Tablet
+
+- Collapsible sidebar.
+- Responsive charts.
+- Stacked project cards.
+- Adaptive tables.
+
+## Mobile
+
+At 360px, 390px and 430px widths:
+
+- Compact top header.
+- Bottom navigation for key sections.
+- Slide-out navigation for secondary modules.
+- Single-column KPI cards.
+- Project cards instead of wide tables.
+- Horizontal chart scrolling only where genuinely needed.
+- Full-screen project detail pages.
+- Mobile-friendly filters and date selectors.
+- Touch-friendly approval actions.
+- Full-screen forms.
+- Readable charts.
+- No horizontal page overflow.
+- No tiny buttons.
+- No desktop-only interactions.
+
+Important mobile quick actions:
+- View project progress.
+- Compare projects.
+- Review daily reports.
+- Check workforce.
+- Review pending approvals.
+- Report a project issue.
+- View budget alerts.
+
+---
+
+# 21. FUNCTIONALITY REQUIREMENTS
+
+This must be a functional application, not a collection of decorative screens.
+
+Implement:
+
+- Working sidebar navigation.
+- Working project selectors.
+- Search and filtering.
+- Sorting and pagination.
+- Project details navigation.
+- Project comparison.
+- Interactive charts.
+- Date filters.
+- Forms with validation.
+- Create and edit milestone actions.
+- Task assignment interactions.
+- Issue creation and assignment.
+- Daily report review.
+- Approval workflows.
+- Document upload interface.
+- Export controls.
+- Notifications and unread state.
+- Responsive navigation.
+- Confirmation dialogs for important actions.
+
+Initially use realistic demo data and a modular mock API/service layer.
+
+Do not pretend that demo data represents live site information.
+
+Label demo information clearly as "Sample Data".
+
+Structure the services so they can later connect to Supabase without rewriting the UI.
+
+---
+
+# 22. DATA ARCHITECTURE AND BUSINESS RULES
+
+Design the application around these core entities:
+
+- organizations
+- organization_members
+- user_roles
+- role_permissions
+- projects
+- project_assignments
+- project_sites
+- site_assignments
+- project_milestones
+- project_tasks
+- task_dependencies
+- workforce_assignments
+- attendance_records
+- workforce_requirements
+- project_budgets
+- project_budget_revisions
+- project_cost_records
+- purchase_requests
+- purchase_orders
+- material_receipts
+- inventory_transactions
+- equipment_assets
+- equipment_assignments
+- project_issues
+- project_risks
+- daily_progress_reports
+- daily_progress_report_revisions
+- approval_workflows
+- approval_records
+- project_documents
+- notifications
+- project_activity_logs
+
+Every project-specific record must contain organization and project scope as appropriate.
+
+Enforce tenant isolation and project-level access restrictions.
+
+Do not trust frontend permissions alone. Enforce authorization on the backend.
+
+Use Supabase PostgreSQL, Supabase Auth, Row Level Security and Supabase Realtime when integrating the real backend.
+
+Use Cloudflare R2 for private document and image storage.
+
+---
+
+# 23. IMPORTANT BUSINESS LOGIC
+
+Implement the following rules:
+
+1. A Project Manager sees only assigned projects.
+2. Project data must never leak across organizations.
+3. Project progress must be calculated using defined milestone or work-quantity rules, not random percentages.
+4. Planned and actual progress must be displayed separately.
+5. Original project deadlines must be preserved when dates are revised.
+6. Budget, committed cost, approved expenditure and paid expenditure must remain separate.
+7. Pending expenses must not be shown as paid expenses.
+8. Workforce totals must be based on valid project assignments.
+9. Attendance information must respect the selected reporting date and timezone.
+10. Historical project assignments must be preserved for accurate reporting.
+11. Critical issues must be escalated through the configured workflow.
+12. Approvals must be permission-controlled and auditable.
+13. Project Managers cannot directly modify payroll or confidential employee salary records without explicit authorization.
+14. Document access must be permission-controlled.
+15. Every important update must have an audit history.
+16. Project health indicators must have transparent explanations.
+17. Missing data must be shown as unavailable, not silently treated as zero.
+18. All currency values must use decimal-safe calculations and display in INR.
+19. Do not hardcode legal or financial thresholds.
+20. Do not claim that location, attendance, material or financial data is live unless it is actually connected and verified.
+
+---
+
+# 24. SAMPLE DATA
+
+Create realistic Indian construction demo projects.
+
+Example projects:
+
+Project 1:
+- Name: Hyderabad Commercial Tower
+- Code: BF-PRJ-001
+- Location: Hyderabad, Telangana
+- Type: Commercial Construction
+- Status: Active
+- Approved Budget: ₹12 Crore
+- Planned Progress: 58%
+- Actual Progress: 54%
+- Assigned Workforce: 185
+
+Project 2:
+- Name: Bengaluru Residential Complex
+- Code: BF-PRJ-002
+- Location: Bengaluru, Karnataka
+- Type: Residential Construction
+- Status: At Risk
+- Approved Budget: ₹18 Crore
+- Planned Progress: 72%
+- Actual Progress: 63%
+- Assigned Workforce: 240
+
+Project 3:
+- Name: Vijayawada Infrastructure Development
+- Code: BF-PRJ-003
+- Location: Vijayawada, Andhra Pradesh
+- Type: Infrastructure
+- Status: On Track
+- Approved Budget: ₹9 Crore
+- Planned Progress: 35%
+- Actual Progress: 37%
+- Assigned Workforce: 125
+
+These are illustrative sample records only. Clearly label them as demo data.
+
+---
+
+# 25. DEVELOPMENT APPROACH
+
+Build this in a structured sequence:
+
+Phase 1:
+- Project Manager application shell.
+- Sidebar and topbar.
+- Overview dashboard.
+- KPI cards.
+- Project portfolio.
+- Project details workspace.
+
+Phase 2:
+- Project comparison.
+- Timeline.
+- Milestones.
+- Task monitoring.
+
+Phase 3:
+- Workforce monitoring.
+- Site performance.
+- Budget and cost control.
+
+Phase 4:
+- Materials and procurement.
+- Equipment monitoring.
+- Project issues and risks.
+- Daily progress reports.
+
+Phase 5:
+- Approvals.
+- Project documents.
+- Reports and analytics.
+- Notifications.
+- Final responsive and interaction testing.
+
+Do not generate every module as one enormous component.
+
+Create reusable components and separate pages.
+
+Maintain consistent navigation, visual language, state management and data structures.
+
+---
+
+# FINAL QUALITY EXPECTATION
+
+The finished Project Manager Dashboard should feel like a real enterprise construction project management system.
+
+The Project Manager must be able to log in and answer these questions immediately:
+
+1. How many projects am I managing?
+2. Which projects are delayed?
+3. Which project is exceeding its budget?
+4. Which site is performing best?
+5. Where is the workforce shortage?
+6. Which milestones are overdue?
+7. What materials are running short?
+8. Which project has critical issues?
+9. What approvals are waiting for me?
+10. Are my projects likely to finish on time and within budget?
+
+Prioritize clarity, usability, actionable information, real workflows, security and responsive design.
+
+Build the complete Project Manager experience with professional enterprise UI and meaningful interactions.

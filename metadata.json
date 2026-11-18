@@ -1,0 +1,8 @@
+{
+  "name": "BuildFlow — Project Manager Dashboard",
+  "description": "Enterprise Construction Workforce Management and Project Operations SaaS workspace for Project Managers: portfolio tracking, site comparison, Gantt milestones, budget & cost control, procurement, daily progress reports, and approvals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
